@@ -13,8 +13,3 @@ provider "yandex" {
   cloud_id  = var.cloud_id
 }
 
-module "vpc" {
-  source = "./modules/vpc"
-
-  workspace = terraform.workspace
-}
