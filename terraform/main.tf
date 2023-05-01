@@ -1,4 +1,13 @@
-provider "yandex-cloud" {
+terraform {
+  required_providers {
+    yandex = {
+      source = "yandex-cloud/yandex"
+      version = "0.41.0"
+    }
+  }
+}
+
+provider "yandex" {
   folder_id = var.folder_id
   token     = var.oauth_token
   cloud_id  = var.cloud_id
