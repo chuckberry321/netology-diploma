@@ -11,7 +11,7 @@ resource "yandex_compute_instance" "master" {
   boot_disk {
     initialize_params {
       #ubuntu-2204-lts
-      image_id = "f2elvlqj4cctsthvdqrg"
+      image_id = "fd8earpjmhevh8h6ug5o"
       type = local.disk_type[terraform.workspace]
       size = local.disk_size[terraform.workspace]
     }
@@ -40,7 +40,7 @@ resource "yandex_compute_instance" "worker" {
   boot_disk {
     initialize_params {
       # ubuntu-2204-lts
-      image_id = "f2elvlqj4cctsthvdqrg"
+      image_id = "fd8earpjmhevh8h6ug5o"
       type = local.disk_type[terraform.workspace]
       size = local.disk_size[terraform.workspace]
     }
