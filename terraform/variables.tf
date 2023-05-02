@@ -4,6 +4,7 @@ variable "folder_id" {
 
 variable "oauth_token" {
   type = string
+  default=""
 }
 
 variable "cloud_id" {
