@@ -18,5 +18,5 @@ cloud {
 provider "yandex" {
   folder_id = var.folder_id
   cloud_id  = var.cloud_id
-  token     = var.oauth_token
+  token     = "${var.oauth_token}"
 }
