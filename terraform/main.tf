@@ -1,5 +1,5 @@
 resource "yandex_compute_instance" "master" {
-  name = "master"
+  name = "master-${terraform.workspace}"
   zone = local.zone[terraform.workspace]
   count = 1
 
@@ -10,8 +10,8 @@ resource "yandex_compute_instance" "master" {
 
   boot_disk {
     initialize_params {
-      image_id = "fd8emvfmfoaordspe1jr"
-      # centos"fd8sni054daiudopdnfe"
+      #ubuntu-2204-lts
+      image_id = "f2elvlqj4cctsthvdqrg"
       type = local.disk_type[terraform.workspace]
       size = local.disk_size[terraform.workspace]
     }
@@ -28,7 +28,7 @@ resource "yandex_compute_instance" "master" {
 }
 
 resource "yandex_compute_instance" "worker" {
-  name = "worker"
+  name = "worker-${terraform.workspace}-${count.index + 1}"
   zone = local.zone[terraform.workspace]
   count = 2
 
@@ -39,7 +39,8 @@ resource "yandex_compute_instance" "worker" {
 
   boot_disk {
     initialize_params {
-      image_id = "fd8emvfmfoaordspe1jr"
+      # ubuntu-2204-lts
+      image_id = "f2elvlqj4cctsthvdqrg"
       type = local.disk_type[terraform.workspace]
       size = local.disk_size[terraform.workspace]
     }
