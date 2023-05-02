@@ -3,7 +3,7 @@ variable "folder_id" {
 }
 
 variable "oauth_token" {
-  default = ""
+  type = string
 }
 
 variable "cloud_id" {
