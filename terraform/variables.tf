@@ -2,12 +2,12 @@ variable "folder_id" {
   default = ""
 }
 
-variable "ssh-user" {
+variable "ssh_user" {
   type = string
   default=""
 }
 
-variable "ssh-key" {
+variable "ssh_key" {
   type = string
   default=""
 }
