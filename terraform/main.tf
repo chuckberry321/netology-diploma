@@ -22,9 +22,10 @@ resource "yandex_compute_instance" "master" {
     nat       = true
   }
 
-#  metadata = {
+  metadata = {
+    ssh-key = var.ssh-key
 #    ssh-keys = "ubuntu:${file("id_rsa.pub")}"
-#  }
+  }
 }
 
 resource "yandex_compute_instance" "worker" {
