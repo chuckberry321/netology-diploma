@@ -27,15 +27,6 @@ resource "yandex_compute_instance" "master" {
 #    ssh-keys = "ubuntu:${file("id_rsa.pub")}"
   }
 
-  resource "null_resource" "add_ssh_key" {
-    provisioner "remote-exec" {
-      inline = [
-        "echo '${var.ssh_key}' >> ~/.ssh/authorized_keys"
-      ]
-    }
-}
-
-
 }
 
 
