@@ -23,7 +23,7 @@ resource "yandex_compute_instance" "master" {
   }
 
   metadata = {
-    ssh-keys = "vagrant:${file("./id_rsa.pub")}"
+    ssh-keys = "ubuntu:${file("./id_rsa.pub")}"
   }
 
 }
