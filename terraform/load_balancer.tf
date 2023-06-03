@@ -1,27 +1,42 @@
-resource "yandex_lb_target_group" "k8s-lb-tg" {
-  name = "${terraform.workspace}-k8s-lb-tg"
+resource "yandex_lb_target_group" "k8s_lb_tg_master" {
+  name = "${terraform.workspace}-k8s-tg-master"
 
   dynamic "target" {
-    for_each = {
-      for node_type, nodes in {
-        "master" = yandex_compute_instance.master,
-        "worker" = yandex_compute_instance.worker,
-      } : {
-        for node in nodes : node.network_interface.0.ip_address => {
-          subnet_id = node.network_interface.0.subnet_id
-        }
-        if node.tags.* contains node_type
-      }
-    }
+    for_each = [for node in yandex_compute_instance.master : {
+      address   = node.network_interface.0.ip_address
+      subnet_id = node.network_interface.0.subnet_id
+    }]
 
     content {
       subnet_id = target.value.subnet_id
-      address = target.key
+      address   = target.value.address
     }
   }
 
   depends_on = [
     yandex_compute_instance.master,
+    yandex_compute_instance.worker
+  ]
+
+}
+
+resource "yandex_lb_target_group" "k8s_lb_tg_worker" {
+  name = "${terraform.workspace}-k8s-tg-worker"
+
+  dynamic "target" {
+    for_each = [for node in yandex_compute_instance.worker : {
+      address   = node.network_interface.0.ip_address
+      subnet_id = node.network_interface.0.subnet_id
+    }]
+
+    content {
+      subnet_id = target.value.subnet_id
+      address   = target.value.address
+    }
+  }
+
+  depends_on = [
+    yandex_compute_instance.master,    
     yandex_compute_instance.worker
   ]
 
@@ -56,7 +71,19 @@ resource "yandex_lb_network_load_balancer" "k8s-lb" {
   }
 
   attached_target_group {
-    target_group_id = yandex_lb_target_group.k8s-lb-tg.id
+    target_group_id = yandex_lb_target_group.k8s_lb_tg_master.id
+
+    healthcheck {
+      name = "http"
+      http_options {
+        port = 30090
+        path = "/login"
+      }
+    }
+  }
+
+  attached_target_group {
+    target_group_id = yandex_lb_target_group.k8s_lb_tg_worker.id
 
     healthcheck {
       name = "http"
