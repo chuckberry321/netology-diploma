@@ -6,16 +6,16 @@ resource "yandex_lb_target_group" "k8s-lb-tg" {
       for node_type, nodes in {
         "master" = yandex_compute_instance.master,
         "worker" = yandex_compute_instance.worker
-      } : [
-        for node in nodes : {
-          address   = node.network_interface.0.ip_address
+      } : {
+        for node in nodes : node.network_interface.0.ip_address => {
           subnet_id = node.network_interface.0.subnet_id
         } if node.tags.* contains node_type
-      ]
+      }
     }
+
     content {
       subnet_id = target.value.subnet_id
-      address   = target.value.address
+      address   = key(target.value)
     }
   }
 
