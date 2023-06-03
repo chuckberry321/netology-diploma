@@ -9,7 +9,8 @@ resource "yandex_lb_target_group" "k8s-lb-tg" {
       } : {
         for node in nodes : node.network_interface.0.ip_address => {
           subnet_id = node.network_interface.0.subnet_id
-        } if node.tags.* contains node_type
+        }
+        if node.tags.* contains node_type
       }
     }
 
