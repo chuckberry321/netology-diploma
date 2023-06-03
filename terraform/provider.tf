@@ -6,12 +6,12 @@ terraform {
   }
   required_version = ">= 0.14"
 
-cloud {
-  organization = "chuckberry321"
-
-  workspaces {
-    tags = ["stage", "prod"]
-   }
+#cloud {
+#  organization = "chuckberry321"
+#
+#  workspaces {
+#    tags = ["stage", "prod"]
+#   }
  }
 }
 

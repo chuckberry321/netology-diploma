@@ -22,6 +22,10 @@ resource "yandex_compute_instance" "master" {
     nat       = true
   }
 
+  scheduling_policy {
+    preemptible = true
+  }
+
   metadata = {
     ssh-keys = "ubuntu:${file("./id_rsa.pub")}"
   }
@@ -53,7 +57,11 @@ resource "yandex_compute_instance" "worker" {
     nat       = true
   }
 
-#  metadata = {
-#    ssh-keys = "ubuntu:${file("id_rsa.pub")}"
-#  }
+  scheduling_policy {
+    preemptible = true
+  }
+
+  metadata = {
+    ssh-keys = "ubuntu:${file("id_rsa.pub")}"
+  }
 }
