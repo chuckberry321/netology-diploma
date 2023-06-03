@@ -12,7 +12,7 @@ terraform {
 #  workspaces {
 #    tags = ["stage", "prod"]
 #   }
- }
+# }
 }
 
 provider "yandex" {
