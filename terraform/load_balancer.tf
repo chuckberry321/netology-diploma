@@ -5,7 +5,7 @@ resource "yandex_lb_target_group" "k8s-lb-tg" {
     for_each = {
       for node_type, nodes in {
         "master" = yandex_compute_instance.master,
-        "worker" = yandex_compute_instance.worker
+        "worker" = yandex_compute_instance.worker,
       } : {
         for node in nodes : node.network_interface.0.ip_address => {
           subnet_id = node.network_interface.0.subnet_id
@@ -15,7 +15,7 @@ resource "yandex_lb_target_group" "k8s-lb-tg" {
 
     content {
       subnet_id = target.value.subnet_id
-      address   = key(target.value)
+      address = target.key
     }
   }
 
