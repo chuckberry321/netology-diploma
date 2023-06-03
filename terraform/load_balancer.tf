@@ -2,7 +2,7 @@ resource "yandex_lb_target_group" "k8s-lb-tg" {
   name = "${terraform.workspace}-k8s-lb-tg"
 
   dynamic "target" {
-    for_each = [for node in yandex_compute_instance.* : {
+    for_each = [for node in yandex_compute_instance: {
       address   = node.network_interface.0.ip_address
       subnet_id = node.network_interface.0.subnet_id
     }]
