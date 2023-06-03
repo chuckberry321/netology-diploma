@@ -3,13 +3,19 @@ resource "yandex_lb_target_group" "k8s-lb-tg" {
 
   dynamic "target" {
     for_each = {
-      for node_type in ["master", "worker"] : node in yandex_compute_instance:
-        node_type == "master" ? node.tags.* contains "master" : node.tags.* contains "worker"
+      for node_type, nodes in {
+        "master" = yandex_compute_instance.master,
+        "worker" = yandex_compute_instance.worker
+      } : [
+        for node in nodes : {
+          address   = node.network_interface.0.ip_address
+          subnet_id = node.network_interface.0.subnet_id
+        } if node.tags.* contains node_type
+      ]
     }
-
     content {
-      address   = target.value.network_interface.0.ip_address
-      subnet_id = target.value.network_interface.0.subnet_id
+      subnet_id = target.value.subnet_id
+      address   = target.value.address
     }
   }
 
