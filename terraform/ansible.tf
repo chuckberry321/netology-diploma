@@ -11,7 +11,7 @@ resource "null_resource" "waiting" {
 
 resource "null_resource" "pip_installation" {
   provisioner "local-exec" {
-    command = "sudo apt-get update && sudo apt-get install -y python3-pip"
+    command = "apt-get update && sudo apt-get install -y python3-pip"
   }
 
   triggers = {
