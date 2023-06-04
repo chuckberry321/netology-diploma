@@ -56,7 +56,7 @@ resource "null_resource" "copy_cluster_config" {
 
 resource "null_resource" "add_master_ip_address" {
   provisioner "local-exec" {
-    command = "echo 'supplementary_addresses_in_ssl_keys: [${yandex_compute_instance.master[0].network_interface.0.nat_ip_address}]' >> /tmp/kubespray/inventory/netology-k8s-cluster/local/group_vars/k8s_cluster/k8s-cluster.yml"
+    command = "echo 'supplementary_addresses_in_ssl_keys: [${yandex_compute_instance.master[0].network_interface.0.nat_ip_address}]' >> /tmp/kubespray/inventory/netology-k8s-cluster/local/group_vars/k8s-cluster/k8s-cluster.yml"
   }
 
   depends_on = [
