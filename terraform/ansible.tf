@@ -1,6 +1,7 @@
-# Импорт ресурса
-locals {
-  hosts = module.inventory.local_file_hosts
+terraform {
+  depends_on = [ 
+    "./inventory.tf" 
+  ]
 }
 
 resource "null_resource" "waiting" {
