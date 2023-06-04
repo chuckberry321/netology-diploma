@@ -6,8 +6,8 @@ resource "local_file" "hosts" {
 # ## different ip than the default iface
 # ## We should set etcd_member_name for etcd cluster. The node that is not a etcd member do not need to set the value, or can set the empty string value.
 [all]
-node1 ansible_host=${yandex_compute_instance.worker[1].network_interface.0.nat_ip_address} ip=${yandex_compute_instance.worker[1].network_interface.0.ip_address}
-node2 ansible_host=${yandex_compute_instance.worker[2].network_interface.0.nat_ip_address} ip=${yandex_compute_instance.worker[2].network_interface.0.ip_address}
+node1 ansible_host=${yandex_compute_instance.worker[0].network_interface.0.nat_ip_address} ip=${yandex_compute_instance.worker[0].network_interface.0.ip_address}
+node2 ansible_host=${yandex_compute_instance.worker[1].network_interface.0.nat_ip_address} ip=${yandex_compute_instance.worker[1].network_interface.0.ip_address}
 cp1 ansible_host=${yandex_compute_instance.master[0].network_interface.0.nat_ip_address} etcd_member_name=etcd1 ip=${yandex_compute_instance.master[0].network_interface.0.ip_address}
 
 [all:vars]
