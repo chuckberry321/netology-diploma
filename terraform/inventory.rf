@@ -42,7 +42,7 @@ kube_node
 calico_rr
 
 DOC
-  filename = "../ansible/netology-cluster/inventory"
+  filename = "../ansible/netology-k8s-cluster/inventory"
 
   depends_on = [
     yandex_compute_instance.master,
@@ -53,7 +53,7 @@ DOC
 
 resource "null_resource" "debug_inventory" {
   provisioner "local-exec" {
-    command = "cat ../ansible/netology-cluster/inventory"
+    command = "cat ../ansible/netology-k8s-cluster/inventory"
   }
 
   depends_on = [
