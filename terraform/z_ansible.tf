@@ -1,9 +1,3 @@
-terraform {
-  depends_on = [ 
-    "./inventory.tf" 
-  ]
-}
-
 resource "null_resource" "waiting" {
   provisioner "local-exec" {
     command = "sleep 30"
