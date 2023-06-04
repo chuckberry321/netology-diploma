@@ -42,7 +42,7 @@ resource "null_resource" "mkdir_kube_config" {
   }
 
   depends_on = [
-    null_resource.wait
+    null_resource.waiting
   ]
 
   triggers = {
@@ -65,7 +65,7 @@ resource "null_resource" "prepare_copy_kube_config" {
   }
 
   depends_on = [
-    null_resource.config_k8s_cluster
+    null_resource.config_netology_k8s_cluster
   ]
 
   triggers = {
