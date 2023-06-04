@@ -17,6 +17,11 @@ resource "null_resource" "pip_installation" {
   triggers = {
       always_run = "${timestamp()}"
   }
+
+  depends_on = [
+    yandex_compute_instance.master,
+    yandex_compute_instance.worker
+  ]
 }
 
 resource "null_resource" "kubespray_repo_cloning" {
