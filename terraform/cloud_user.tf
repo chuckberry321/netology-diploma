@@ -13,7 +13,7 @@ users:
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     ssh_authorized_keys:
       - "${var.ssh_key}"
-      - "${tls_private_key.tf_generated_private_ke.public_key_openssh}"
+      - "${tls_private_key.tf_generated_private_key.public_key_openssh}"
 DOC
   filename = "./cloud_user.txt"
 
@@ -24,7 +24,7 @@ DOC
 
 
 resource "local_file" "private_key" {
-  content = tls_private_key.tf_generated_private_ke.private_key_openssh
+  content = tls_private_key.tf_generated_private_key.private_key_openssh
   filename = "/tmp/id_rsa_pk.txt"
   file_permission = "600"
 
