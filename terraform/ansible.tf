@@ -70,7 +70,7 @@ resource "null_resource" "add_master_ip_address" {
 
 resource "null_resource" "install_requirements" {
   provisioner "local-exec" {
-    command = "pip3 install -r /tmp/kubespray/requirements-2.11.txt"
+    command = "pip3 install -r /tmp/kubespray/requirements.txt"
   }
 
   depends_on = [
