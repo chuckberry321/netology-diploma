@@ -1,3 +1,12 @@
+module "inventory" {
+  source = "./inventory.tf"
+}
+
+# Импорт ресурса
+locals {
+  hosts = module.inventory.local_file_hosts
+}
+
 resource "null_resource" "waiting" {
   provisioner "local-exec" {
     command = "sleep 30"
