@@ -39,7 +39,7 @@ resource "null_resource" "copy_cluster_config" {
   }
 
   depends_on = [
-    local_file.inventory,
+    local_file.hosts,
     null_resource.kubespray_repo_cloning
   ]
 
