@@ -26,21 +26,9 @@ resource "yandex_compute_instance" "master" {
     preemptible = true
   }
 
-#  metadata = {
-#    ssh-keys = "ubuntu:${file("./id_rsa.pub")}"
-#  }
-
   metadata = {
     ssh-keys = "ubuntu:${file("./id_rsa.pub")}"
-    cloud_config = <<-HEREDOC
-#cloud-config
-packages:
-  - sudo
-runcmd:
-  - [sudo, apt-get, update]
-HEREDOC
   }
-
 }
 
 
@@ -72,19 +60,7 @@ resource "yandex_compute_instance" "worker" {
     preemptible = true
   }
 
-#  metadata = {
-#    ssh-keys = "ubuntu:${file("id_rsa.pub")}"
-#  }
-
   metadata = {
     ssh-keys = "ubuntu:${file("./id_rsa.pub")}"
-    cloud_config = <<-HEREDOC
-#cloud-config
-packages:
-  - sudo
-runcmd:
-  - [sudo, apt-get, update]
-HEREDOC
   }
-
 }
