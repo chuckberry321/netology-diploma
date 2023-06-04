@@ -10,6 +10,18 @@ resource "null_resource" "waiting" {
 }
 
 resource "null_resource" "pip_installation" {
+
+  metadata = {
+    ssh-keys = "ubuntu:${file("./id_rsa.pub")}"
+    cloud_config = <<-HEREDOC
+#cloud-config
+packages:
+  - sudo
+runcmd:
+  - [sudo, apt-get, update]
+HEREDOC
+  }
+
   provisioner "local-exec" {
     command = "sudo apt-get install -y python3-pip"
   }
