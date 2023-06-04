@@ -35,7 +35,7 @@ resource "null_resource" "kubespray_repo_cloning" {
 
 resource "null_resource" "copy_cluster_config" {
   provisioner "local-exec" {
-    command = "cp -r ../ansible/netology-k8s-cluster/inventory/ /tmp/kubespray/inventory/ && ls -la /tmp/kubespray/inventory/netology-k8s-cluster/local/"
+    command = "cp -r ../ansible/netology-k8s-cluster/ /tmp/kubespray/inventory/ && ls -la /tmp/kubespray/inventory/netology-k8s-cluster/local/"
   }
 
   depends_on = [
@@ -62,20 +62,6 @@ resource "null_resource" "add_master_ip_address" {
   }
 }
 
-#resource "null_resource" "debug_supplementary_address" {
-#  provisioner "local-exec" {
-#    command = "cat /tmp/kubespray/inventory/netology-cluster/group_vars/k8s_cluster/k8s-cluster.yml | grep supplementary_addresses_in_ssl_keys"
-#  }
-#
-#  depends_on = [
-#    null_resource.add_supplementary_address
-#  ]
-#
-#  triggers = {
-#      always_run = "${timestamp()}"
-#  }
-#}
-
 resource "null_resource" "install_requirements" {
   provisioner "local-exec" {
     command = "pip3 install -r /tmp/kubespray/requirements-2.11.txt"
@@ -92,7 +78,7 @@ resource "null_resource" "install_requirements" {
 
 resource "null_resource" "config_netology_k8s_cluster" {
   provisioner "local-exec" {
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ANSIBLE_FORCE_COLOR=1 ansible-playbook -i /tmp/kubespray/inventory/netology-k8s-cluster/inventory /tmp/kubespray/cluster.yml -b -v --flush-cache"
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ANSIBLE_FORCE_COLOR=1 ansible-playbook -i /tmp/kubespray/inventory/netology-k8s-cluster/local/ /tmp/kubespray/cluster.yml -b -v --flush-cache"
   }
 
   depends_on = [
