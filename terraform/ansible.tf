@@ -12,7 +12,7 @@ resource "null_resource" "waiting" {
 resource "null_resource" "pip_installation" {
 
   provisioner "local-exec" {
-    command = "sudo apt-get install -y python3-pip"
+    command = "curl https://bootstrap.pypa.io/pip/3.6/get-pip.py -o /tmp/get-pip.py && python3 /tmp/get-pip.py"
   }
 
   triggers = {
