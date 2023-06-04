@@ -51,6 +51,10 @@ DOC
   ]
 }
 
+output "local_file_hosts" {
+  value = local_file.hosts
+}
+
 #resource "null_resource" "debug_hosts" {
 #  provisioner "local-exec" {
 #    command = "cat ../ansible/netology-k8s-cluster/local/hosts"
