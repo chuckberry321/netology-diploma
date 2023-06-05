@@ -42,7 +42,7 @@ resource "null_resource" "kubespray_repo_cloning" {
 resource "null_resource" "copy_cluster_config" {
   provisioner "local-exec" {
 #    command = "cp -r ../ansible/netology-k8s-cluster/ /tmp/kubespray/inventory/ && ls -la /tmp/kubespray/inventory/netology-k8s-cluster/local/"
-     command = "cp -r ../ansible/netology-k8s-cluster/ /tmp/kubespray/inventory/ && ls -la /tmp/kubespray/playbooks/roles/"
+     command = "cp -r ../ansible/netology-k8s-cluster/ /tmp/kubespray/inventory/ && ls -la /tmp/kubespray/"
   }
 
   depends_on = [
