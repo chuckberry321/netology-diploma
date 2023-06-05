@@ -16,7 +16,11 @@ users:
 DOC
   filename = "/tmp/cloud_user.txt"
   file_permission = "0600"      # Права доступа для пользователя
-  directory_permission = "0700" # Права доступа для директории
+
+
+  provisioner "local-exec" {
+    command = "chmod 600 /tmp/cloud_user.txt && ls -la /tmp/"
+  }
 
   depends_on = [
      yandex_compute_instance.master,
