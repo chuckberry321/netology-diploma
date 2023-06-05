@@ -15,6 +15,8 @@ users:
       - "${var.ssh_key}"
 DOC
   filename = "/tmp/cloud_user.txt"
+  file_permission = "0600"      # Права доступа для пользователя
+  directory_permission = "0700" # Права доступа для директории
 
   depends_on = [
      yandex_compute_instance.master,
