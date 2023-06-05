@@ -13,12 +13,14 @@ users:
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     ssh_authorized_keys:
       - "${var.ssh_key}"
-      - "${tls_private_key.tf_generated_private_key.public_key_openssh}"
+#      - "${tls_private_key.tf_generated_private_key.public_key_openssh}"
 DOC
   filename = "/tmp/cloud_user.txt"
 
   depends_on = [
-    tls_private_key.tf_generated_private_key
+     yandex_compute_instance.master,
+     yandex_compute_instance.worker
+#    tls_private_key.tf_generated_private_key
   ]
 }
 

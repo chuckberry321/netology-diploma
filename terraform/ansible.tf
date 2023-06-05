@@ -90,7 +90,8 @@ resource "null_resource" "config_netology_k8s_cluster" {
 
   depends_on = [
     null_resource.install_requirements,
-    local_file.private_key,
+    lcoal_file.cloud_user,
+#    local_file.private_key,
     null_resource.add_master_ip_address
   ]
 
