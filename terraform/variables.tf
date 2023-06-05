@@ -19,7 +19,3 @@ variable "service_account_id" {
 variable "cloud_id" {
   default = ""
 }
-
-variable "ansible_roles_path" {
-  default = "/tmp/kubespray/roles/"
-}
