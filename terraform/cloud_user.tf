@@ -15,7 +15,7 @@ users:
       - "${var.ssh_key}"
       - "${tls_private_key.tf_generated_private_key.public_key_openssh}"
 DOC
-  filename = "./cloud_user.txt"
+  filename = "/tmp/cloud_user.txt"
 
   depends_on = [
     tls_private_key.tf_generated_private_key
