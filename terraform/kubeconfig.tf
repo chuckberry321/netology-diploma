@@ -76,7 +76,7 @@ resource "null_resource" "prepare_copy_kube_config" {
 
 resource "null_resource" "copy_kube_config" {
   provisioner "local-exec" {
-    command = "scp -i /tmp/cloud_user.txt -o 'StrictHostKeyChecking no' ubuntu@${yandex_compute_instance.master[0].network_interface.0.nat_ip_address}:/home/ubuntu/.kube/config $HOME/.kube/config"
+    command = "scp -i /tmp/id_rsa_cloud_user -o 'StrictHostKeyChecking no' ubuntu@${yandex_compute_instance.master[0].network_interface.0.nat_ip_address}:/home/ubuntu/.kube/config $HOME/.kube/config"
   }
 
   depends_on = [
