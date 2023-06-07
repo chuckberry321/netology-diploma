@@ -19,7 +19,7 @@ DOC
 
 
   provisioner "local-exec" {
-    command = "chmod 600 /tmp/cloud_user.txt && ls -la /tmp/"
+    command = "ls -la /tmp/ && cat /tmp/cloud_user.txt"
   }
 
   depends_on = [
