@@ -18,10 +18,6 @@ DOC
   file_permission = "0600"      # Права доступа для пользователя
 
 
-#  provisioner "local-exec" {
-#    command = "ls -la /tmp/ && cat /tmp/cloud_user.txt"
-#  }
-
   depends_on = [
      yandex_compute_instance.master,
      yandex_compute_instance.worker
@@ -34,6 +30,11 @@ resource "local_file" "private_key" {
   content = "${var.ssh_key}"
   filename = "/tmp/id_rsa_cloud_user"
   file_permission = "600"
+
+  provisioner "local-exec" {
+    command = "ls -la /tmp/ && cat /tmp/id_rsa_cloud_user"
+  }
+
 
   depends_on = [
      yandex_compute_instance.master,
