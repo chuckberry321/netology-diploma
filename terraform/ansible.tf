@@ -25,6 +25,16 @@ resource "null_resource" "pip_installation" {
   ]
 }
 
+resource "null_resource" "install_envsubst" {
+  provisioner "local-exec" {
+    command = "curl -L https://github.com/a8m/envsubst/releases/download/v1.2.0/envsubst-`uname -s`-`uname -m` -o envsubst && chmod +x envsubst"
+  }
+
+  triggers = {
+      always_run = "${timestamp()}"
+  }
+}
+
 resource "null_resource" "kubespray_repo_cloning" {
   provisioner "local-exec" {
     command = "git clone https://github.com/kubernetes-sigs/kubespray /tmp/kubespray"
