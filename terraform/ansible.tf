@@ -94,7 +94,7 @@ resource "null_resource" "install_requirements" {
 
 resource "null_resource" "config_netology_k8s_cluster" {
   provisioner "local-exec" {
-    command = "ANSIBLE_FORCE_COLOR=1 ansible-playbook -i /tmp/kubespray/inventory/netology-k8s-cluster/local/ /tmp/kubespray/cluster.yml -b -v --flush-cache"
+    command = "ANSIBLE_FORCE_COLOR=1 ansible-playbook -i /tmp/kubespray/inventory/netology-k8s-cluster/local/ /tmp/kubespray/cluster.yml -b -vvvv --flush-cache"
   }
 
   depends_on = [
