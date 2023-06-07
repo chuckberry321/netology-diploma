@@ -94,13 +94,12 @@ resource "null_resource" "install_requirements" {
 
 resource "null_resource" "config_netology_k8s_cluster" {
   provisioner "local-exec" {
-    command = "ANSIBLE_FORCE_COLOR=1 ansible-playbook -i /tmp/kubespray/inventory/netology-k8s-cluster/local/ /tmp/kubespray/cluster.yml -b -vv --flush-cache"
+    command = "ANSIBLE_FORCE_COLOR=1 ansible-playbook -i /tmp/kubespray/inventory/netology-k8s-cluster/local/ /tmp/kubespray/cluster.yml -b -vvv --flush-cache"
   }
 
   depends_on = [
     null_resource.install_requirements,
-    local_file.cloud_user,
-#    local_file.private_key,
+    local_file.private_key,
     null_resource.add_master_ip_address
   ]
 
