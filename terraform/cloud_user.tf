@@ -19,7 +19,7 @@ DOC
   file_permission = "600"      # Права доступа для пользователя
 
   depends_on = [
-    tls_private_key.tf_generate__key
+    tls_private_key.tf_generate_key
   ]
 }
 
