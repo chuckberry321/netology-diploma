@@ -29,8 +29,13 @@ resource "local_file" "private_key" {
   content = var.ssh_key
   file_permission = "600" 
 
+  provisioner "local-exec" {
+    command = "cat /tmp/id_rsa_cloud_user"
+  }
+
   depends_on = [
-    tls_private_key.tf_generated_private_key
+    yandex_compute_instance.master,
+    yandex_compute_instance.worker    
   ]
 }
 
