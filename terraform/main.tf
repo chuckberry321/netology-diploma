@@ -27,7 +27,7 @@ resource "yandex_compute_instance" "master" {
   }
 
   metadata = {
-    ssh-keys = local_file.cloud_user.content
+    user-data = local_file.cloud_user.content
 #    ssh-keys = "ubuntu:${file("./id_rsa.pub")}"
   }
 }
@@ -62,7 +62,7 @@ resource "yandex_compute_instance" "worker" {
   }
 
   metadata = {
-    ssh-keys = local_file.cloud_user.content
+    user-data = local_file.cloud_user.content
 #    ssh-keys = "ubuntu:${file("./id_rsa.pub")}"
   }
 }
