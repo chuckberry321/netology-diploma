@@ -15,7 +15,7 @@ users:
       - "${var.ssh_key}"
       - "${tls_private_key.tf_generated_private_key.public_key_openssh}"
 DOC
-  filename = "/tmp/cloud_user.txt"
+  filename = "/tmp/meta.txt"
   file_permission = "600"      # Права доступа для пользователя
 
 
