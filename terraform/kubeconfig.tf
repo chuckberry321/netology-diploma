@@ -62,8 +62,7 @@ resource "null_resource" "prepare_copy_kube_config" {
     user            = "ubuntu"
     private_key     = tls_private_key.tf_generated_private_key.private_key_openssh
     host            = yandex_compute_instance.master[0].network_interface.0.nat_ip_address
-    kex_algorithms  = "diffie-hellman-group1-sha1"
-    ciphers         = "aes256-cbc"
+    ssh_kex         = ["diffie-hellman-group-exchange-sha256"]
   }
 
   depends_on = [
