@@ -62,7 +62,13 @@ resource "null_resource" "prepare_copy_kube_config" {
     user            = "ubuntu"
     private_key     = tls_private_key.tf_generated_private_key.private_key_openssh
     host            = yandex_compute_instance.master[0].network_interface.0.nat_ip_address
-    ssh_2           = true
+    ssh = {
+      agent                 = false
+      # имя или путь до private key для ssh соединения
+      private_key           = tls_private_key.tf_generated_private_key.private_key_openssh
+      # Включаем SSH протокол версии 2
+      version               = "2"
+    }
 #    ssh_kex_algorithms  = "diffie-hellman-group1-sha1"
 #    ssh_ciphers         = "aes256-cbc"
 #    user        = "ubuntu"
