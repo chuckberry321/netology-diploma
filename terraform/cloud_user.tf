@@ -18,11 +18,6 @@ DOC
   filename = "./meta.txt"
   file_permission = "600"      # Права доступа для пользователя
 
-  provisioner "local-exec" {
-    command = "cat ./meta.txt""
-  }
-
-
   depends_on = [
     tls_private_key.tf_generated_private_key
   ]
