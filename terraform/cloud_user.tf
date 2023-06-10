@@ -26,7 +26,7 @@ DOC
 
 
 resource "local_file" "private_key" {
-  content = tls_private_key.tf_generated_private_key.private_key_openssh
+  content = [chomp(tls_private_key.tf_generated_private_key.private_key_openssh)]
   filename = "/tmp/id_rsa_cloud_user"
   file_permission = "600"
 
