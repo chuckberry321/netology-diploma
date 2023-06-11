@@ -38,7 +38,7 @@ resource "null_resource" "export_env_kube_config" {
 
 resource "null_resource" "mkdir_kube_config" {
   provisioner "local-exec" {
-    command = "mkdir ~/.kube && cd  ~/ && pwd && ls -la"
+    command = "mkdir ~/.kube && cd  ~/ && pwd && ls -la /home/"
   }
 
   depends_on = [
@@ -53,7 +53,7 @@ resource "null_resource" "mkdir_kube_config" {
 resource "null_resource" "prepare_copy_kube_config" {
   provisioner "remote-exec" {
     inline = [
-      "mkdir ~/.kube && sudo cp /root/.kube/config ~/.kube/config && sudo chown $USER:$USER ~/.kube/config"
+      "ls -la /home/ && mkdir ~/.kube && sudo cp /root/.kube/config ~/.kube/config && sudo chown $USER:$USER ~/.kube/config"
     ]
   }
 
