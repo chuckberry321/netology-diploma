@@ -24,7 +24,7 @@ resource "null_resource" "install_kubectl" {
 
 resource "null_resource" "export_env_kube_config" {
   provisioner "local-exec" {
-    command = "export KUBECONFIG=$HOME/.kube/config && echo $KUBECONFIG && ls -la $KUBECONFIG"
+    command = "export KUBECONFIG=$HOME/.kube/config && echo $KUBECONFIG &&  ip a"
   }
 
   depends_on = [
