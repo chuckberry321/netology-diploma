@@ -38,7 +38,7 @@ resource "null_resource" "export_env_kube_config" {
 
 resource "null_resource" "mkdir_kube_config" {
   provisioner "local-exec" {
-    command = "mkdir ~/.kube && ls -la ~/"
+    command = "mkdir ~/.kube && cd  ~/ && pwd && ls -la"
   }
 
   depends_on = [
