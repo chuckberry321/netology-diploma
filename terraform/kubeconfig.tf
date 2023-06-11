@@ -101,6 +101,20 @@ resource "null_resource" "add_ext_address_kube_config" {
   }
 }
 
+resource "null_resource" "debug_copy_kube_config" {
+  provisioner "local-exec" {
+    command = "cat $HOME/.kube/config | grep server"
+  }
+
+  depends_on = [
+    null_resource.add_ext_address_kube_config
+  ]
+
+  triggers = {
+      always_run = "${timestamp()}"
+  }
+}
+
 resource "null_resource" "get_pods" {
   provisioner "local-exec" {
     command = "./kubectl get pods --all-namespaces"
