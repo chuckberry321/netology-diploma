@@ -25,7 +25,7 @@ done
 for num in 1 2
 do
 printf "worker-$num   ansible_host="
-terraform output -json int_ip_address_master | jq -j ".[$num-1]"
+terraform output -json ext_ip_address_worker | jq -j ".[$num-1]"
 printf "   ip="
 terraform output -json int_ip_address_worker | jq -j ".[$num-1]"
 printf "\n"
