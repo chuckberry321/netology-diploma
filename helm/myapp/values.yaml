@@ -1,0 +1,18 @@
+replicaCount: 1
+
+myapp_deployment:
+  image:
+    repository: chuckberry321/myapp-nginx
+    tag: latest
+  resources:
+    requests: 
+      memory: "24Mi"
+      cpu: "32m"
+    limits:
+      memory: "48Mi"
+      cpu: "64m"
+  replicaCount: 5
+
+myapp_service:
+  nodeport: 30080
+

@@ -3,7 +3,7 @@
 set -e
 
 cd terraform
-# terraform init 
+terraform init 
 terraform apply -auto-approve
 
 cd ../
