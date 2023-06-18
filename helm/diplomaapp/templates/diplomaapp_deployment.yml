@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: diplomaapp-{{ .Release.Name }}
+  labels:
+    app.kubernetes.io/name: diplomaapp
+spec:
+  replicas: {{ .Values.diplomaapp_deployment.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: diplomaapp
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: diplomaapp
+    spec:
+      containers:
+      - name: diplomaapp
+        image: {{ .Values.diplomaapp_deployment.image.repository }}:{{ .Values.diplomaapp_deployment.image.tag }}
+        resources:
+          requests:
+            memory: {{ .Values.diplomaapp_deployment.resources.requests.memory }}
+            cpu: {{ .Values.diplomaapp_deployment.resources.requests.cpu }}
+          limits:
+            memory: {{ .Values.diplomaapp_deployment.resources.limits.memory }}
+            cpu: {{ .Values.diplomaapp_deployment.resources.limits.cpu }}
+        ports:
+        - containerPort: 80

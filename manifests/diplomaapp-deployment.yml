@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: diploma-app
+  name: diplomaapp
   labels:
-    app.kubernetes.io/name: diploma-app
+    app.kubernetes.io/name: diplomaapp
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app.kubernetes.io/name: diploma-app
+      app.kubernetes.io/name: diplomaapp
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: diploma-app
+        app.kubernetes.io/name: diplomaapp
     spec:
       containers:
-      - name: diploma-app
-        image: chuckberry321/diploma-app:latest
+      - name: diplomaapp
+        image: chuckberry321/diplomaapp:latest
         resources:
           requests:
             memory: "24Mi"

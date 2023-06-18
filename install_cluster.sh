@@ -33,4 +33,4 @@ kubectl create namespace monitoring
 kubectl create namespace test-app
 helm install prometheus --namespace monitoring prometheus-community/kube-prometheus-stack
 kubectl apply -f ./manifests/grafana-service-nodeport.yaml
-helm install netology ./helm/diploma-app -n test-app
+helm install netology ./helm/diplomaapp -n test-app

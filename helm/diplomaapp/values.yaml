@@ -1,8 +1,8 @@
 replicaCount: 1
 
-diploma-app_deployment:
+diplomaapp_deployment:
   image:
-    repository: chuckberry321/diploma-app
+    repository: chuckberry321/diplomaapp
     tag: latest
   resources:
     requests: 
@@ -13,6 +13,6 @@ diploma-app_deployment:
       cpu: "64m"
   replicaCount: 5
 
-diploma-app_service:
-  nodeport: 33080
+diplomaapp_service:
+  nodeport: 31000
 
