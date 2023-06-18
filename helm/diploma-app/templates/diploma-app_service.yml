@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: diploma-app
+  name: diploma-app-nginx
   namespace: test-app
 spec:
   type: NodePort
@@ -11,4 +11,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-      nodePort: 33080
+      nodePort: {{ .Values.diploma-app_service.nodeport }}

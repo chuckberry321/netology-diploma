@@ -1,8 +1,8 @@
 replicaCount: 1
 
-myapp_deployment:
+diploma-app_deployment:
   image:
-    repository: chuckberry321/myapp-nginx
+    repository: chuckberry321/diploma-app
     tag: latest
   resources:
     requests: 
@@ -13,6 +13,6 @@ myapp_deployment:
       cpu: "64m"
   replicaCount: 5
 
-myapp_service:
-  nodeport: 30080
+diploma-app_service:
+  nodeport: 33080
 
