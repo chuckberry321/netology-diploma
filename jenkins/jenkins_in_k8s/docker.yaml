@@ -32,5 +32,3 @@ spec:
       volumes: 
         - name: docker-graph-storage 
           emptyDir: {}    
-          #ports:
-          #- containerPort: 80
