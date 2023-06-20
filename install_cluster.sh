@@ -12,21 +12,21 @@ cp -rfp kubespray/inventory/sample kubespray/inventory/mycluster
 cd terraform
 export WORKSPACE=$(terraform workspace show)
 export KUBECONFIG=~/.kube/$WORKSPACE/config
-# bash ./generate_inventory.sh > ../kubespray/inventory/mycluster/hosts.ini
-terraform output -json ext_ip_address_master | jq -r '.[]' > ../master_addr
-terraform output -json ext_ip_address_jenkins | jq -r '.[]' > ../jenkins_addr
+bash ../generate_inventory.sh > ../kubespray/inventory/mycluster/hosts.ini
+terraform output -json ext_ip_address_master | jq -r '.[]' > ../ansible_addr/master_addr
+terraform output -json ext_ip_address_jenkins | jq -r '.[]' > ../ansible_addr/jenkins_addr
 export IP_MASTER=$(terraform output -json ext_ip_address_master | jq -r '.[]')
 
-sleep 120
+sleep 30
 
 cd ../kubespray
 ansible-playbook -i ../kubespray/inventory/mycluster/hosts.ini ../kubespray/cluster.yml --become --ssh-common-args='-o StrictHostKeyChecking=no'
 
 cd ..
-ansible-playbook -i master_addr k8s_conf.yml --user ubuntu --ssh-common-args='-o StrictHostKeyChecking=no'
-ansible-playbook -i jenkins_addr jenkins.yml --user ubuntu --ssh-common-args='-o StrictHostKeyChecking=no'
-rm -rf master_addr
-rm -rf jenkins_addr
+ansible-playbook -i ansible_addr/master_addr k8s_conf.yml --user ubuntu --ssh-common-args='-o StrictHostKeyChecking=no'
+ansible-playbook -i ansible_addr/jenkins_addr jenkins/jenkins.yaml --user ubuntu --ssh-common-args='-o StrictHostKeyChecking=no'
+rm -rf ansible_addr/master_addr
+rm -rf ansible_addr/jenkins_addr
 
 sleep 30
 
