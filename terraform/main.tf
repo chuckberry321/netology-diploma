@@ -90,6 +90,10 @@ resource "yandex_compute_instance" "jenkins" {
     nat       = true
   }
 
+  scheduling_policy {
+    preemptible = true
+  }
+
   metadata = {
     user-data = local_file.cloud_user.content
   }

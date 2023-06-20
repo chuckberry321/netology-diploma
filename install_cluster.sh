@@ -24,7 +24,7 @@ ansible-playbook -i ../kubespray/inventory/mycluster/hosts.ini ../kubespray/clus
 
 cd ..
 ansible-playbook -i ansible_addr/master_addr k8s_conf.yml --user ubuntu --ssh-common-args='-o StrictHostKeyChecking=no'
-ansible-playbook -i ansible_addr/jenkins_addr jenkins/jenkins.yaml --user ubuntu --ssh-common-args='-o StrictHostKeyChecking=no'
+ansible-playbook -i ansible_addr/jenkins_addr jenkins.yml --user ubuntu --ssh-common-args='-o StrictHostKeyChecking=no'
 rm -rf ansible_addr/master_addr
 rm -rf ansible_addr/jenkins_addr
 
