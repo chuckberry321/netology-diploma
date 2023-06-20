@@ -150,9 +150,9 @@
 2. Пример pull request с комментариями созданными atlantis'ом или снимки экрана из Terraform Cloud.
 
 **Снимки экрана из Terraform Cloud.**
-![Netdata](/other_files/image1.jpg)
-![Netdata](/other_files/image2.jpg)
-![Netdata](/other_files/image3.jpg)
+![Netdata](/other_files/image1.png)
+![Netdata](/other_files/image2.png)
+![Netdata](/other_files/image3.png)
 
 **Инстансы в yandex cloud**
 ```
@@ -180,7 +180,7 @@ vagrant@vagrant:~$
 4. Репозиторий с Dockerfile тестового приложения и ссылка на собранный docker image.
 
 *Снимок экрана с docker image*
-![Netdata](/other_files/image4.jpg)
+![Netdata](/other_files/image4.png)
 
 Репозиторий с [Dockerfile](https://github.com/chuckberry321/diploma-app.git)
 Ссылка на [docker image](https://hub.docker.com/r/chuckberry321/diplomaapp/tags)
