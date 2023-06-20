@@ -150,9 +150,9 @@
 2. Пример pull request с комментариями созданными atlantis'ом или снимки экрана из Terraform Cloud.
 
 **Снимки экрана из Terraform Cloud.**
-![Netdata](/files/image1.jpg)
-![Netdata](/files/image2.jpg)
-![Netdata](/files/image3.jpg)
+![Netdata](/other_files/image1.jpg)
+![Netdata](/other_files/image2.jpg)
+![Netdata](/other_files/image3.jpg)
 
 **Инстансы в yandex cloud**
 ```
@@ -173,14 +173,14 @@ vagrant@vagrant:~$
 
 3. Репозиторий с конфигурацией ansible, если был выбран способ создания Kubernetes кластера при помощи ansible.
 
-Конфигурация находится в инвентори файле [hosts.ini](https://github.com/chuckberry321/netology-diploma/blob/main/files/hosts.ini)
+Конфигурация находится в инвентори файле [hosts.ini](https://github.com/chuckberry321/netology-diploma/blob/main/other_files/hosts.ini)
 Файл создается скриптом [generate_inventory.sh](https://github.com/chuckberry321/netology-diploma/blob/main/generate_inventory.sh)
 Для создания использовал kubespray
 
 4. Репозиторий с Dockerfile тестового приложения и ссылка на собранный docker image.
 
 *Снимок экрана с docker image*
-![Netdata](/files/image4.jpg)
+![Netdata](/other_files/image4.jpg)
 
 Репозиторий с [Dockerfile](https://github.com/chuckberry321/diploma-app.git)
 Ссылка на [docker image](https://hub.docker.com/r/chuckberry321/diplomaapp/tags)
