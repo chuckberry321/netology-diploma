@@ -12,7 +12,7 @@ cp -rfp kubespray/inventory/sample kubespray/inventory/mycluster
 cd terraform
 export WORKSPACE=$(terraform workspace show)
 export KUBECONFIG=~/.kube/$WORKSPACE/config
-bash ./generate_inventory.sh > ../kubespray/inventory/mycluster/hosts.ini
+# bash ./generate_inventory.sh > ../kubespray/inventory/mycluster/hosts.ini
 terraform output -json ext_ip_address_master | jq -r '.[]' > ../master_addr
 terraform output -json ext_ip_address_jenkins | jq -r '.[]' > ../jenkins_addr
 export IP_MASTER=$(terraform output -json ext_ip_address_master | jq -r '.[]')
@@ -27,6 +27,8 @@ ansible-playbook -i master_addr k8s_conf.yml --user ubuntu --ssh-common-args='-o
 ansible-playbook -i jenkins_addr jenkins.yml --user ubuntu --ssh-common-args='-o StrictHostKeyChecking=no'
 rm -rf master_addr
 rm -rf jenkins_addr
+
+sleep 30
 
 kubectl create namespace monitoring
 kubectl create namespace test-app
