@@ -174,7 +174,9 @@ vagrant@vagrant:~$
 3. Репозиторий с конфигурацией ansible, если был выбран способ создания Kubernetes кластера при помощи ansible.
 
 Конфигурация находится в инвентори файле [hosts.ini](https://github.com/chuckberry321/netology-diploma/blob/main/other_files/hosts.ini)
+
 Файл создается скриптом [generate_inventory.sh](https://github.com/chuckberry321/netology-diploma/blob/main/generate_inventory.sh)
+
 Для создания использовал kubespray
 
 4. Репозиторий с Dockerfile тестового приложения и ссылка на собранный docker image.
@@ -183,20 +185,24 @@ vagrant@vagrant:~$
 ![Netdata](/other_files/image4.png)
 
 Репозиторий с [Dockerfile](https://github.com/chuckberry321/diploma-app.git)
+
 Ссылка на [docker image](https://hub.docker.com/r/chuckberry321/diplomaapp/tags)
 
 5. Репозиторий с конфигурацией Kubernetes кластера.
 
 Для установки кластера используется [скрипт](https://github.com/chuckberry321/netology-diploma/blob/main/install_cluster.sh)
+
 Репозиторий с конфигурацией кластера [Kubernets](https://github.com/chuckberry321/netology-diploma.git)
 
 6. Ссылка на тестовое приложение и веб интерфейс Grafana с данными доступа.
 
-[Тестовое приложение](http://http://51.250.11.213:31000/)
-[Grafana](http://51.250.11.213:30030/)
-Доступ:
-login - admin
-password - prom-operator
+[Тестовое приложение](http://http://51.250.67.234:31000/)
+
+[Grafana](http://51.250.67.234:30030/)
+
+Доступ:   
+login - admin   
+password - prom-operator   
 
 
 7. Все репозитории рекомендуется хранить на одном ресурсе (github, gitlab)
