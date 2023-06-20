@@ -198,16 +198,25 @@ vagrant@vagrant:~$
 
 [Тестовое приложение](http://http://51.250.67.234:31000/)
 
+**Снимок экрана тестового приложения**
+![Netdata](/other_files/image5.png)
+
+
 [Grafana](http://51.250.67.234:30030/)
 
 Доступ:   
 login - admin   
 password - prom-operator   
 
+**Снимок экрана Grafana**
+![Netdata](/other_files/image6.png)
+
+
 
 7. Все репозитории рекомендуется хранить на одном ресурсе (github, gitlab)
 
 [Репозиторий с материалами дипломного проекта](https://github.com/chuckberry321/diploma-app.git)
+
 [Репозиторий с приложением](https://github.com/chuckberry321/diploma-app.git)
 
 Для экономии затрат все виртуальные машины прерываемые:
