@@ -1,4 +1,3 @@
-
 # Дипломный практикум в Yandex.Cloud
 
 <details><summary>Задание</summary>
@@ -156,19 +155,16 @@
 
 **Инстансы в yandex cloud**
 ```
-vagrant@vagrant:~/netology-diploma$ yc compute instances list
+vagrant@vagrant:~$ yc compute instances list
 +----------------------+-----------------+---------------+---------+----------------+-------------+
 |          ID          |      NAME       |    ZONE ID    | STATUS  |  EXTERNAL IP   | INTERNAL IP |
 +----------------------+-----------------+---------------+---------+----------------+-------------+
-| fhm98bkicb0r9t6meg3f | worker-stage-1  | ru-central1-a | RUNNING | 158.160.112.1  | 10.0.10.33  |
-| fhmche7tj7gg4jaok0mk | jenkins-stage-1 | ru-central1-a | RUNNING | 84.252.130.2   | 10.0.10.6   |
-| fhmera2a04jl8rdq2n3n | worker-stage-2  | ru-central1-a | RUNNING | 130.193.51.170 | 10.0.10.28  |
-| fhmlvg7tb0bsrgi09fii | master-stage    | ru-central1-a | RUNNING | 51.250.67.234  | 10.0.10.11  |
+| fhm0efa2n5qh3n0n0fht | master-stage    | ru-central1-a | RUNNING | 158.160.109.85 | 10.0.10.12  |
+| fhmb2lda4s4jn4194kr0 | worker-stage-1  | ru-central1-a | RUNNING | 158.160.99.126 | 10.0.10.16  |
+| fhmm04bqb4o8ph5d9vmg | worker-stage-2  | ru-central1-a | RUNNING | 158.160.103.39 | 10.0.10.15  |
+| fhmraa408lngskejr4kd | jenkins-stage-1 | ru-central1-a | RUNNING | 158.160.105.43 | 10.0.10.9   |
 +----------------------+-----------------+---------------+---------+----------------+-------------+
-
-vagrant@vagrant:~/netology-diploma$ 
-
-vagrant@vagrant:~$ 
+vagrant@vagrant:~$
 ```
 
 3. Репозиторий с конфигурацией ansible, если был выбран способ создания Kubernetes кластера при помощи ansible.
@@ -196,13 +192,13 @@ vagrant@vagrant:~$
 
 6. Ссылка на тестовое приложение и веб интерфейс Grafana с данными доступа.
 
-[Тестовое приложение](http://51.250.67.234:31000/)
+[Тестовое приложение](http://158.160.109.85:31000/:31000/)
 
 **Снимок экрана тестового приложения**
 ![Netdata](/other_files/image5.png)
 
 
-[Grafana](http://51.250.67.234:30030/)
+[Grafana](http://158.160.109.85:30030/)
 
 Доступ:   
 login - admin   
@@ -211,20 +207,32 @@ password - prom-operator
 **Снимок экрана Grafana**
 ![Netdata](/other_files/image6.png)
 
+7. Установка и настройка CI/CD
 
+**Интерфейс Jenkins**
+[Jenkins](http://158.160.105.43:8080/)
 
-7. Все репозитории рекомендуется хранить на одном ресурсе (github, gitlab)
+Сборка образа, отпрвка в hub.docker и публикация приложения происходит после коммита и пуша в репозиторий тестового приложения на github.   
+
+Второй [коммит](https://github.com/chuckberry321/diploma-app/commit/b6cfca845c44d7a4f5b5064b8509aa2484258481)   
+
+**Пайплайн Jenkins после второго коммита, первую сборку запускал из Jenkina/ Следующие запускают после пуша в репозиторий.**
+![Netdata](/other_files/image7.png)
+
+**Репозиторий DockerHub**
+![Netdata](/other_files/image8.png)
+
+**Тестовое приложение, вторая версия после коммита**
+![Netdata](/other_files/image9.png)
+
+**Репозиторий тестового приложения на github. Теги.**
+![Netdata](/other_files/image10.png)
+
+8. Все репозитории рекомендуется хранить на одном ресурсе (github, gitlab)
 
 [Репозиторий с материалами дипломного проекта](https://github.com/chuckberry321/diploma-app.git)
 
 [Репозиторий с приложением](https://github.com/chuckberry321/diploma-app.git)
-
-Для экономии затрат все виртуальные машины прерываемые:
-```
-  scheduling_policy {
-    preemptible = true
-  }
-```
 
 ---
 

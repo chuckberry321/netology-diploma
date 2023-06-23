@@ -22,10 +22,6 @@ resource "yandex_compute_instance" "master" {
     nat       = true
   }
 
-  scheduling_policy {
-    preemptible = true
-  }
-
   metadata = {
     user-data = local_file.cloud_user.content
   }
@@ -56,10 +52,6 @@ resource "yandex_compute_instance" "worker" {
     nat       = true
   }
 
-  scheduling_policy {
-    preemptible = true
-  }
-
   metadata = {
     user-data = local_file.cloud_user.content
   }
@@ -88,10 +80,6 @@ resource "yandex_compute_instance" "jenkins" {
   network_interface {
     subnet_id = local.subnet-type[terraform.workspace]
     nat       = true
-  }
-
-  scheduling_policy {
-    preemptible = true
   }
 
   metadata = {
